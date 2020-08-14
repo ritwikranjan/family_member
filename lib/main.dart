@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Color(0xFF175B26),
-          title: Row(
+          title: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text('Family Members'),
@@ -73,34 +73,47 @@ class SearchBox extends StatelessWidget {
   }
 }
 
+class Chat {
+  String img, name, lastMessage, time;
+  Chat({this.img, this.name, this.lastMessage, this.time});
+}
+
+List<Chat> chats = [
+  Chat(
+    img:
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+    name: 'Ritwik Ranjan',
+    lastMessage: 'Hii How are you?',
+    time: '10:00AM',
+  ),
+  Chat(
+    img:
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+    name: 'Ritwik Ranjan',
+    lastMessage: 'Hii How are you?',
+    time: '10:00AM',
+  ),
+  Chat(
+    img:
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+    name: 'Ritwik Ranjan',
+    lastMessage: 'Hii How are you?',
+    time: '10:00AM',
+  )
+];
+
 class ChatList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
       shrinkWrap: true,
-      children: <Widget>[
-        ChatListTile(
-          img:
-              'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-          name: 'Ritwik Ranjan',
-          lastMessage: 'Hii How are you?',
-          time: '10:00AM',
-        ),
-        ChatListTile(
-          img:
-              'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-          name: 'Ritwik Ranjan',
-          lastMessage: 'Hii How are you?',
-          time: '10:00AM',
-        ),
-        ChatListTile(
-          img:
-              'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-          name: 'Ritwik Ranjan',
-          lastMessage: 'Hii How are you?',
-          time: '10:00AM',
-        )
-      ],
+      children: chats
+          .map((e) => ChatListTile(
+              img: e.img,
+              name: e.name,
+              lastMessage: e.lastMessage,
+              time: e.time))
+          .toList(),
     );
   }
 }
